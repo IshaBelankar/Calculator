@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 10px;
+    }
+    .calculator {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+        padding: 20px;
+        max-width: 300px;
+        width: 100%;
+    }
+    .calculator-screen {
+        border: 1px solid grey;
+        margin: 0 0 10px;
+        padding: 10px;
+        font-size: 24px;
+        text-align: right;
+        width: 280px;
+        outline: none;
+    }
+    .calculator-keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .calculator-keys input[type=button]{
+        background-color: #e0e0e0;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    button{
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    }
+</style>
+</head>
+<body>
+    <h1 style="font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Calculator</h1>
+    <div style="margin-left: 180px; margin-bottom: 4px;" class="buttons"> 
+        Choose theme:
+        <button onclick="dark()">d</button>
+        <button onclick="light()">l</button>
+    </div>
+    <div id="calci" class="calculator">
+        <form name="form1">         
+            <input id="input1" type="text" name="answer" class="calculator-screen"/>
+        <div class="calculator-keys">
+            <input type="button" value="7" onclick="form1.answer.value+='7'">
+            <input type="button" value="8" onclick="form1.answer.value+='8'">
+            <input type="button" value="9" onclick="form1.answer.value+='9'">
+            <input type="button" value="/" onclick="form1.answer.value+='/'">
+            <input type="button" value="4" onclick="form1.answer.value+='4'">
+            <input type="button" value="5" onclick="form1.answer.value+='5'">
+            <input type="button" value="6" onclick="form1.answer.value+='6'">
+            <input type="button" value="*" onclick="form1.answer.value+='*'">
+            <input type="button" value="1" onclick="form1.answer.value+='1'">
+            <input type="button" value="2" onclick="form1.answer.value+='2'">
+            <input type="button" value="3" onclick="form1.answer.value+='3'">
+            <input type="button" value="-" onclick="form1.answer.value+='-'">
+            <input type="button" value="0" onclick="form1.answer.value+='0'">
+            <input type="button" value="." onclick="form1.answer.value+='.'">
+            <input type="button" value="=" id="calculate" onclick="form1.answer.value =eval(form1.answer.value)">
+            <input type="button" value="+" onclick="form1.answer.value+='+'">
+            <input type="button" value="AC" id="clear" onclick="form1.answer.value=''">
+            <input type="button" value="DEL" onclick="form1.answer.value=form1.answer.value.slice(0,-1)">
+        </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        const bu1=document.querySelectorAll('input[type="button"]:nth-of-type(-n+18)');
+        var c1=document.getElementById("calci");
+        var c2=document.getElementById("input1");
+
+        function dark(){
+            // console.log("dark called")
+            bu1.forEach(button => {
+                    // console.log(button.value);
+                    button.style.backgroundColor="#37343450";
+                    button.style.color="white";
+                });
+            c1.style.background="#141414";
+            c2.style.background="#4c494c";
+            c2.style.color="white";
+            c2.style.border="none";
+        }
+        function light(){
+            // console.log("light called")
+            bu1.forEach(button => {
+                    // console.log(button.value);
+                    button.style.backgroundColor="#e0e0e0";
+                    button.style.color="black";    
+                });
+            c1.style.background="#fff";
+            c2.style.background="#fff";
+            c2.style.color="black";
+            c2.style.border="1px solid grey";
+        }
+    </script>
+</body>
+</html>
